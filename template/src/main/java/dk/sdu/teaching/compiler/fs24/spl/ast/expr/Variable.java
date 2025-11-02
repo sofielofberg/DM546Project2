@@ -16,4 +16,9 @@ public class Variable extends Expr {
 		return visitor.visitVariableExpr(this);
 	}
 
+	@Override
+	public <T> T translate() {
+		throw new UnsupportedOperationException("Unimplemented method 'translate'");
+	}
+
 }

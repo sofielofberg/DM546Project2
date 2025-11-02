@@ -14,4 +14,9 @@ public class Literal extends Expr {
 	public <T> T accept(ExprVisitor<T> visitor) {
 		return visitor.visitLiteralExpr(this);
 	}
+
+	@Override
+	public <T> T translate() {
+		throw new UnsupportedOperationException("Unimplemented method 'translate'");
+	}
 }

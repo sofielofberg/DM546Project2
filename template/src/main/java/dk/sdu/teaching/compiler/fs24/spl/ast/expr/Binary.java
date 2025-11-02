@@ -20,4 +20,9 @@ public class Binary extends Expr {
 		return visitor.visitBinaryExpr(this);
 	}
 
+	@Override
+	public <T> T translate() {
+		throw new UnsupportedOperationException("Unimplemented method 'translate'");
+	}
+
 }

@@ -19,4 +19,9 @@ public class If extends Stmt {
 	public <T> T accept(StmtVisitor<T> visitor) {
 		return visitor.visitIfStmt(this);
 	}
+
+	@Override
+	public <T> T translate() {
+		throw new UnsupportedOperationException("Unimplemented method 'translate'");
+	}
 }

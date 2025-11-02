@@ -16,4 +16,9 @@ public class Block extends Stmt {
 	public <T> T accept(StmtVisitor<T> visitor) {
 		return visitor.visitBlockStmt(this);
 	}
+
+	@Override
+	public <T> T translate() {
+		throw new UnsupportedOperationException("Unimplemented method 'translate'");
+	}
 }

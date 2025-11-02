@@ -17,4 +17,9 @@ public class Assign extends Expr {
 	public <T> T accept(ExprVisitor<T> visitor) {
 		return visitor.visitAssignExpr(this);
 	}
+
+	@Override
+	public <T> T translate() {
+		throw new UnsupportedOperationException("Unimplemented method 'translate'");
+	}
 }
