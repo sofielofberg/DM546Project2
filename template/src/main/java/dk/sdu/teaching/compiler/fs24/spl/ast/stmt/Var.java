@@ -18,9 +18,4 @@ public class Var extends Stmt {
 	public <T> T accept(StmtVisitor<T> visitor) {
 		return visitor.visitVarStmt(this);
 	}
-
-	@Override
-	public <T> T translate() {
-		throw new UnsupportedOperationException("Unimplemented method 'translate'");
-	}
 }

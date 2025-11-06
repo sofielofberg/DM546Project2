@@ -19,9 +19,4 @@ public class Logical extends Expr {
 	public <T> T accept(ExprVisitor<T> visitor) {
 		return visitor.visitLogicalExpr(this);
 	}
-
-	@Override
-	public <T> T translate() {
-		throw new UnsupportedOperationException("Unimplemented method 'translate'");
-	}
 }

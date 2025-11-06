@@ -15,9 +15,4 @@ public class Expression extends Stmt {
 	public <T> T accept(StmtVisitor<T> visitor) {
 		return visitor.visitExpressionStmt(this);
 	}
-
-	@Override
-	public <T> T translate() {
-		throw new UnsupportedOperationException("Unimplemented method 'translate'");
-	}
 }

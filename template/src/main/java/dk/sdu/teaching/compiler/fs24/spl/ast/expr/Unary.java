@@ -17,9 +17,4 @@ public class Unary extends Expr {
 	public <T> T accept(ExprVisitor<T> visitor) {
 		return visitor.visitUnaryExpr(this);
 	}
-
-	@Override
-	public <T> T translate() {
-		throw new UnsupportedOperationException("Unimplemented method 'translate'");
-	}
 }

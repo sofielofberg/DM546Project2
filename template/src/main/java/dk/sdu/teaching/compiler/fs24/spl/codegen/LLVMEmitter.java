@@ -4,18 +4,6 @@ package dk.sdu.teaching.compiler.fs24.spl.codegen;
 /// LLVEmitter.java
 /// November 2025
 /// @author Sandra Johansen and Sofie Løfberg
-/// 
-/// Hej Sofie,
-/// der er en masse kommentare rundt omkring
-/// medmindre jeg slettede dem senere...
-/// det er fordi jeg vil kunne huske hvad jeg lavede
-/// da jeg havde styr på det. vi gennemgår sammen og sletter.
-/// 
-/// Notes:
-/// hardcode i32 and i1:
-///     its always i32 for numbers and i1 for bool
-///
-/// 
 ///////////////////////////////////////////////
 
 ////////////////// IMPORTS ///////////////////////////////////////
@@ -42,7 +30,6 @@ import java.nio.file.Files;                                     //
 import java.nio.file.Paths;                                     //
 import java.util.List;                                          //
                                                                 //
-import dk.sdu.teaching.compiler.fs24.spl.scan.Token;            //
 //////////////////////////////////////////////////////////////////
 import dk.sdu.teaching.compiler.fs24.spl.scan.TokenType;
 
@@ -107,7 +94,7 @@ public class LLVMEmitter implements ExprVisitor<String>, StmtVisitor<Void>
     @Override
     public Void visitExpressionStmt(Expression stmt) 
     {
-       compile(stmt.expression); // we just need to add the statement to the IR
+       compile(stmt.expression); 
        return null;
     }
 
@@ -115,10 +102,10 @@ public class LLVMEmitter implements ExprVisitor<String>, StmtVisitor<Void>
     public Void visitIfStmt(If stmt) 
     {
         String cond = compile(stmt.condition); //adds the condition to the IR, returns name of var.
-        String ifTrue = getNewLabel(); //needs to generate new label, maybe use counter?
+        String ifTrue = getNewLabel(); 
         String ifFalse = getNewLabel();
 
-        IR += dent + "br i1 " + cond + ",label %" + ifTrue + ", label %" + ifFalse + NL;
+        IR += dent + "br i1 " + cond + ", label %" + ifTrue + ", label %" + ifFalse + NL;
 
         IR += ifTrue + ":" + NL;
         compile(stmt.thenBranch);
@@ -138,7 +125,6 @@ public class LLVMEmitter implements ExprVisitor<String>, StmtVisitor<Void>
     @Override
     public Void visitVarStmt(Var stmt) 
     {
-        // Var example = <value>;
         String varName = stmt.name.lexeme;
         String varExpr = compile(stmt.initializer);
         IR += dent + "%" + varName + " = " + varExpr + NL;
@@ -160,6 +146,7 @@ public class LLVMEmitter implements ExprVisitor<String>, StmtVisitor<Void>
         IR += ifTrue + ":" + NL;
         compile(stmt.body);
         IR += dent + "br label %" + testLabel + NL;
+        IR += ifFalse + ":" + NL;
         return null;
     }
 
@@ -190,7 +177,6 @@ public class LLVMEmitter implements ExprVisitor<String>, StmtVisitor<Void>
     @Override
     public String visitBinaryExpr(Binary expr) 
     {
-        // sub, mul, udiv, add, less than, equal to, etc.
         String left = compile(expr.left);
         String right = compile(expr.right);
         String var = getNewVar();
@@ -243,7 +229,6 @@ public class LLVMEmitter implements ExprVisitor<String>, StmtVisitor<Void>
     @Override
     public String visitLiteralExpr(Literal expr) 
     {
-        // number or the like, i.e. 6, 9, 10...
         String var = getNewVar();
         if (expr.value instanceof Double) 
         {
@@ -288,7 +273,6 @@ public class LLVMEmitter implements ExprVisitor<String>, StmtVisitor<Void>
     @Override
     public String visitUnaryExpr(Unary expr) 
     {
-        // -5 or !true
         String rightSide = compile(expr.right);
         String var = getNewVar();
         switch (expr.operator.type) 

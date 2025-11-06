@@ -2,5 +2,4 @@ package dk.sdu.teaching.compiler.fs24.spl.ast;
 
 public abstract class Expr {
 	public abstract <T> T accept(ExprVisitor<T> visitor);
-	public abstract <T> T translate(); // we don't use / need these
 }

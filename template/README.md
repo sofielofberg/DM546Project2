@@ -10,7 +10,8 @@ We save the results of running any given example code to a file named output.ll.
 We do this by making a new emitter in Spl.java, generating all of the code and placing it in a string IR,
 and then ask the emitter to save the code to a file, using Files.write.
 
-
+We have no cap on the number of variables we generate and we do not release them since 
+this simplified our implementation.
 
 # Authors
 Sandra Johansen, sjoha23

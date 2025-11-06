@@ -20,7 +20,7 @@
     %13 = 0.0
     %x = %13
     %14 = icmp eq i32 %i, %s
-    br i1 %14,label %L1, label %L2
+    br i1 %14, label %L1, label %L2
 L1:
     %15 = 1.0
     %x = %15
@@ -41,3 +41,4 @@ L4:
     %23 = add i32 %a, %22
     %a = %23
     br label %L3
+L5:

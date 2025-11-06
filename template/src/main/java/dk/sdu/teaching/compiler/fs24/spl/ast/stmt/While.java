@@ -17,9 +17,4 @@ public class While extends Stmt {
 	public <T> T accept(StmtVisitor<T> visitor) {
 		return visitor.visitWhileStmt(this);
 	}
-
-	@Override
-	public <T> T translate() {
-		throw new UnsupportedOperationException("Unimplemented method 'translate'");
-	}
 }
