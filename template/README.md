@@ -13,6 +13,11 @@ and then ask the emitter to save the code to a file, using Files.write.
 We have no cap on the number of variables we generate and we do not release them since 
 this simplified our implementation.
 
+# Several strategies could be applied to our code to optimize it.
+These include: 
+- Deleting unnecessary instructions.
+- Doing a liveness analysis to determine which variables should be present in the registers. 
+
 # Authors
 Sandra Johansen, sjoha23
 Sofie Løfberg, soloe23
