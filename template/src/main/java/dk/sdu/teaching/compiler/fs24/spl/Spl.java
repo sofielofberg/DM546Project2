@@ -32,7 +32,14 @@ public class Spl {
 		List<Stmt> statements = parser.parse();
 		LLVMEmitter emitter = new LLVMEmitter();
 		emitter.generateCode(statements);
-
-		//TODO save the created statements to a .ll file
+		try 
+		{
+			emitter.saveCode("output.ll");
+		} 
+		catch (IOException e) 
+		{
+			System.out.println("Failed to write generated IR to file.");
+			e.printStackTrace();
+		}
 	}
 }
